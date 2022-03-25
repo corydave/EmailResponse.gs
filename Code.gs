@@ -1,5 +1,5 @@
 var ss = SpreadsheetApp.getActive();
-var sheet = ss.getSheetByName('COMMUNICATION');
+
 
 function onFormSubmit(e) {
 
