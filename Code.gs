@@ -144,55 +144,6 @@ function test() {
   }
 }
 
-function emailPeople() {
-
-  var numOfUsers = sheet.getLastRow();
-  numOfUsers = numOfUsers - 1;
-  
-  var startRow = 103;
-  var startCol = 12;
-  var numDataCols = 9; 
-  var dateCol = 17;
-  var numRows = 100;
-
-  var users = sheet.getRange(startRow, startCol, numRows, numDataCols).getValues();
-  
-  var message = '';
-  // var userData = [];
-  
-
-  for (var i = 0; i < numRows; i++) {
-    
-    var firstName = users[i][0]; 
-    message = generateMessage(firstName);
-    
-  
-    try {
-      
-      GmailApp.sendEmail(users[i][3],'CCCAT Conference - THIS FRIDAY',message);
-      sheet.getRange(i+2,dateCol).setValue(new Date());
-      // sheet.getRange(i+2,10).setValue(new Date());
-      Logger.log(message + '\nemail=' + users[i][3]);
-      
-    } catch (err) {
-      
-      Logger.log('ERROR\nTried to email ' + users[i][3] + ' but there was an issue. ' + err.lineNumber);
-
-    }
-
-    
-  
-  }
-
-
-
-
-  // Timestamp | First |	Last | College | Email | Host | Accessibility requests | Pronoun
-
-}
-
-
-
 
 
 
